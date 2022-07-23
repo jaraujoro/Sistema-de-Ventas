@@ -4,7 +4,8 @@ package Utilidades.BcryptPassword;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class Bcrypt {
-        public String EncryptionPassword(String password) {//encripta  y devuelve contraseña 
+
+    public String EncryptionPassword(String password) {//encripta  y devuelve contraseña 
         String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
         return bcryptHashString;
     }
@@ -13,4 +14,5 @@ public class Bcrypt {
         BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), hashingpassword);
         return result.verified;
     }
+    
 }

@@ -4,6 +4,7 @@ package Modelo;
 import ConexionJDBC.GestorJDBC;
 import ConexionJDBC.JDBCMySql;
 import DataAccessObject.CategoriaDAO;
+import java.util.List;
 
 public class Categoria {
     
@@ -50,5 +51,44 @@ public class Categoria {
         }
     }
     
-
+    public List<Categoria> listarCategoria(String buscar) throws Exception{
+        gestorJDBC.abrirConexion();
+        List listarCategoria = categoriaDAO.listarCategoria(buscar);
+        gestorJDBC.cerrarConexion();
+        return listarCategoria;
+    }
+    
+    public int eliminarCategoria(String id_categoria) throws Exception {
+        gestorJDBC.abrirConexion();
+        try {
+            gestorJDBC.iniciarTransaccion();
+            int eliminar = categoriaDAO.eliminarCategoria(id_categoria);
+            gestorJDBC.terminarTransaccion();
+            return eliminar;
+        } catch (Exception e) {
+            gestorJDBC.cancelarTransaccion();
+            throw e;
+        }
+    }
+    
+    public Categoria verCategoria(String id_cagetoria) throws Exception{
+        gestorJDBC.abrirConexion();
+        Categoria categoria = categoriaDAO.verCategoria(id_cagetoria);
+        gestorJDBC.cerrarConexion();
+        return categoria;
+    }
+    
+    public int editarCategoria() throws Exception{
+        gestorJDBC.abrirConexion();
+        try {
+            gestorJDBC.iniciarTransaccion();
+            int editar = categoriaDAO.editarCategoria(this);
+            gestorJDBC.terminarTransaccion();
+            return editar;
+        } catch (Exception e) {
+            gestorJDBC.cancelarTransaccion();
+            throw e;
+        }
+      
+    }
 }
