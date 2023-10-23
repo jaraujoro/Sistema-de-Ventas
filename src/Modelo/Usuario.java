@@ -109,9 +109,9 @@ public class Usuario{
     }
     
     public Usuario validarUsuario(String usuario) throws Exception{
-            gestor.abrirConexion();
-            Usuario user = usarioDAO.validarUsuario(usuario);
-            gestor.cerrarConexion();
-            return user;
+        gestor.abrirConexion();
+        Usuario user = usarioDAO.validarUsuario(usuario);
+        gestor.cerrarConexion();
+        return user;
     }
 }

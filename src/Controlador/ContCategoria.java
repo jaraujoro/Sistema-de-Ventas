@@ -1,10 +1,9 @@
-
 package Controlador;
 
 import Modelo.Categoria;
-import Utilidades.ModelTabel.ModelTable;
 import Vista.FormMenu;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -14,17 +13,20 @@ import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-public class ContCategoria extends MouseAdapter implements ActionListener, KeyListener{
-    FormMenu formMenu;
-    Categoria categoria = new Categoria();
-    ImageIcon icon = new ImageIcon("src/imagenes/borrar.png");
-    JButton editar = new JButton("Editar");
-    JButton eliminar = new JButton("Eliminar");
-    private String buscar="";
-    
+public class ContCategoria extends MouseAdapter implements ActionListener, KeyListener {
+
+    private FormMenu formMenu;
+    private Categoria categoria = new Categoria();
+    private ImageIcon icon      = new ImageIcon("src/imagenes/borrar.png");
+    private JButton editar      = new JButton("Editar");
+    private JButton eliminar    = new JButton("Eliminar");
+    private String buscar = "";
+
     public ContCategoria(FormMenu formMenu) {
         this.formMenu = formMenu;
         formMenu.btnEditarCategoría.addActionListener(this);
@@ -32,20 +34,18 @@ public class ContCategoria extends MouseAdapter implements ActionListener, KeyLi
         formMenu.tablaCategoria.addMouseListener(this);
         formMenu.btnLimpiarBuscador.addActionListener(this);
         formMenu.txtBuscarCategoria.addKeyListener(this);
-        //diseño de la tabla categoria.------------------------------------------------------
+        //diseño de la tabla categoria
         editar.setBackground(new Color(23, 162, 184));
         editar.setForeground(Color.white);
+        editar.setBorder(new LineBorder(Color.BLACK));
         eliminar.setBackground(new Color(220, 53, 69));
         eliminar.setForeground(Color.white);
         eliminar.setBorder(new LineBorder(Color.BLACK));
-        editar.setBorder(new LineBorder(Color.BLACK));
-        //editar.setBorder(null);
         listarCategoria();
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
-
         if (formMenu.btnGuardarCategoria == e.getSource()) {
             registrarCategoria();
         }
@@ -60,7 +60,7 @@ public class ContCategoria extends MouseAdapter implements ActionListener, KeyLi
             listarCategoria();
         }
     }
-    
+
     @Override
     public void mouseClicked(MouseEvent e) {
         //evento para la tabla : boton editar o eliminar
@@ -74,9 +74,7 @@ public class ContCategoria extends MouseAdapter implements ActionListener, KeyLi
             eliminarCategoria(id_categoria);
         }
     }
-    
-    
-    
+
     /*Metodos*/
     public void mensaje(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje);
@@ -101,7 +99,7 @@ public class ContCategoria extends MouseAdapter implements ActionListener, KeyLi
             }
         }
     }
-    
+
     public void registrarCategoria() {
         String txtcategoria = formMenu.txtCategoria.getText();
         if (txtcategoria.isEmpty()) {
@@ -128,7 +126,16 @@ public class ContCategoria extends MouseAdapter implements ActionListener, KeyLi
                 return false;
             }
         };
-        formMenu.tablaCategoria.setDefaultRenderer(Object.class, new ModelTable());
+        formMenu.tablaCategoria.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                if (value instanceof JButton) {
+                    JButton btn = (JButton) value;
+                    return btn;
+                }
+                return super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            }
+        });
         try {
             Object[] datos = new Object[4];
 
@@ -199,5 +206,6 @@ public class ContCategoria extends MouseAdapter implements ActionListener, KeyLi
         }
     }
 }
+
 /*formMenu.tablaCategoria.getColumnModel().getColumn(2).setPreferredWidth(10);
    formMenu.tablaCategoria.getColumnModel().getColumn(3).setPreferredWidth(10);*/

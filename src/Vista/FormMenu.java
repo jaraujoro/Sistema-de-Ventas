@@ -590,7 +590,6 @@ public class FormMenu extends javax.swing.JFrame {
         PanelModalCategoriaMode.setVisible(false);
         txtBuscarCategoria.setEnabled(true);
         txtCategoria.setEnabled(true);
-        //https://es.pornhub.com/view_video.php?viewkey=ph5d63a620a5973
     }//GEN-LAST:event_PanelModalCategoriaModeMouseClicked
 
     /**

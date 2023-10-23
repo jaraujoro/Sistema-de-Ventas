@@ -2,6 +2,16 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Proyectos-Java/SistemaDeVentas/src/Controlador/ContUsuario.java</file>
+            <file>file:/D:/Proyectos-Java/SistemaDeVentas/src/Vista/Login/FormLogin.java</file>
+            <file>file:/D:/Proyectos-Java/SistemaDeVentas/src/Vista/FormMenu.java</file>
+            <file>file:/D:/Proyectos-Java/SistemaDeVentas/src/DataAccessObject/CategoriaDAO.java</file>
+            <file>file:/D:/Proyectos-Java/SistemaDeVentas/src/Vista/Login/FormRegistro.java</file>
+            <file>file:/D:/Proyectos-Java/SistemaDeVentas/src/ConexionJDBC/JDBCSQLServer.java</file>
+            <file>file:/D:/Proyectos-Java/SistemaDeVentas/src/ConexionJDBC/GestorJDBC.java</file>
+            <file>file:/D:/Proyectos-Java/SistemaDeVentas/src/Controlador/ContCategoria.java</file>
+            <file>file:/D:/Proyectos-Java/SistemaDeVentas/src/Controlador/ContDashBoard.java</file>
+        </group>
     </open-files>
 </project-private>

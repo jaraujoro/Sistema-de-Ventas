@@ -16,7 +16,7 @@ public class ContDashBoard extends MouseAdapter implements ActionListener{
         formCategoria = new ContCategoria(formMenu);
         formMenu.setVisible(true);
         formMenu.labelNombreUsuario.setText(usuario.getNombre()+" "+usuario.getApellido());
-        cargoUsuario = (usuario.getCargo().getId_cargo()==1) ? "Administrador" :"Vendedor";
+        cargoUsuario = (usuario.getCargo().getId_cargo()==1) ? "Administrador" : "Vendedor";
         formMenu.labelCargoUsuario.setText(cargoUsuario);
         formMenu.btnLimpiarBuscador.setEnabled(false);
         //eventos a los botones
@@ -31,7 +31,7 @@ public class ContDashBoard extends MouseAdapter implements ActionListener{
         //effect's
         formMenu.PanelModalProductoMode.setVisible(false);
         formMenu.PanelModalCategoriaMode.setVisible(false);
-        }
+    }
     
     @Override
     public void actionPerformed(ActionEvent e){
@@ -50,12 +50,11 @@ public class ContDashBoard extends MouseAdapter implements ActionListener{
             formMenu.PanelCategoria.setVisible(false);
             //formMenu.PanelProducto.setVisible(true);
         }
-        
     }
-    //////////////////////////////////////////////////////////////
-     @Override
+
+    @Override
     public void mouseClicked(MouseEvent e) {
-        
+        System.out.println("hola");
     }
     
 }

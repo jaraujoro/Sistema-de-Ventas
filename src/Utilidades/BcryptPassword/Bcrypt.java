@@ -1,6 +1,4 @@
-
 package Utilidades.BcryptPassword;
-
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
 public class Bcrypt {
